@@ -34,7 +34,7 @@ npm run build
 This will:
 1. Clean the output directory
 2. Compile TypeScript code
-3. Load blog data from `../blog-nodejs-ts/data/data.json`
+3. Load blog data from `data/data.json`
 4. Generate 126 blog post pages
 5. Generate 13 pagination pages
 6. Copy all static assets
@@ -88,6 +88,9 @@ blog-static-generator/
 │   └── utils/
 │       ├── DataLoader.ts             # Loads and sorts blog data
 │       └── TemplateRenderer.ts       # Handlebars setup
+├── data/
+│   ├── data.json                     # Blog posts data (126 posts)
+│   └── markdown/                     # Future: markdown blog posts
 ├── public_site/                      # Output directory (gitignored)
 ├── package.json
 ├── tsconfig.json
@@ -153,7 +156,7 @@ Configure your custom domain (`usmans.info`) in the Cloudflare Pages dashboard.
 
 ### Method 1: JSON (Current)
 
-Add new entries to `../blog-nodejs-ts/data/data.json` and rebuild.
+Add new entries to `data/data.json` and rebuild.
 
 ### Method 2: Markdown (Future Enhancement)
 

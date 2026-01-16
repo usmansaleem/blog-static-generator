@@ -6,7 +6,7 @@ import { Category } from '../models/Category';
 export class DataLoader {
   private static readonly DATA_JSON_PATH = path.join(
     __dirname,
-    '../../../blog-nodejs-ts/data/data.json'
+    '../../data/data.json'
   );
 
   public static loadBlogData(): BlogItem[] {
