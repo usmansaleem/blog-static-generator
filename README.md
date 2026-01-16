@@ -127,64 +127,46 @@ public_site/
 
 This matches the existing production URL structure at https://usmans.info
 
-## Deployment to Cloudflare Pages
-
-### Option 1: Wrangler CLI
-
-```bash
-# Build the site
-npm run build
-
-# Deploy to Cloudflare Pages
-npx wrangler pages deploy public_site --project-name=usmans-blog
-```
-
-### Option 2: GitHub Integration
-
-Connect your GitHub repository to Cloudflare Pages with these settings:
-
-- **Build command**: `cd blog-static-generator && npm install && npm run build`
-- **Build output directory**: `blog-static-generator/public_site`
-- **Root directory**: `/` (or `blog-static-generator`)
-- **Node version**: 18 or 20
-
-### Custom Domain
-
-Configure your custom domain (`usmans.info`) in the Cloudflare Pages dashboard.
-
 ## Adding New Blog Posts
 
-### Method 1: JSON (Current)
+To add new blog posts, edit the `data/data.json` file and add entries following this structure:
 
-Add new entries to `data/data.json` and rebuild.
+```json
+{
+  "id": "127",
+  "urlFriendlyId": "my_new_blog_post",
+  "title": "My New Blog Post",
+  "description": "A brief description of the post",
+  "body": "<p>Blog content in HTML format...</p>",
+  "blogSection": "Technology",
+  "createdOn": "2024-01-15",
+  "modifiedOn": "2024-01-15",
+  "categories": [
+    { "name": "TypeScript" },
+    { "name": "Node.js" }
+  ]
+}
+```
 
-### Method 2: Markdown (Future Enhancement)
+After adding new entries, run `npm run build` to regenerate the static site.
 
-1. Install markdown dependencies:
-   ```bash
-   npm install marked gray-matter
-   ```
+## Future Enhancements / TODO
 
-2. Create markdown file in `data/markdown/`:
-   ```markdown
-   ---
-   id: "187"
-   urlFriendlyId: "new_blog_post_2024"
-   title: "New Blog Post"
-   description: "Description here"
-   createdOn: "2024-01-15"
-   modifiedOn: "2024-01-15"
-   categories:
-     - TypeScript
-     - Cloudflare
-   ---
+- **Markdown Support**: Add ability to write blog posts in Markdown format instead of HTML
+  - Create markdown files in `data/markdown/` directory
+  - Use frontmatter for metadata (YAML)
+  - Automatically convert markdown to HTML during build
+  - Libraries to use: `marked` for parsing, `gray-matter` for frontmatter
 
-   # Blog Content
+- **Search Functionality**: Client-side search using lunr.js or fuse.js
 
-   Write content in **markdown** format...
-   ```
+- **RSS Feed**: Auto-generate RSS/Atom feed during build
 
-3. Update DataLoader to parse markdown files (implementation pending)
+- **Sitemap Generation**: Auto-generate sitemap.xml with all pages
+
+- **Category Pages**: Generate dedicated pages for each category/tag
+
+- **Archive Pages**: Generate yearly/monthly archive pages
 
 ## Build Performance
 
