@@ -1,0 +1,29 @@
+{
+  "name": "blog-static-generator",
+  "version": "1.0.0",
+  "description": "Static site generator for Usman's blog",
+  "main": "dist/builder.js",
+  "scripts": {
+    "build": "npm run clean && npm run build:ts && npm run build:site",
+    "build:ts": "tsc",
+    "build:site": "node dist/builder.js",
+    "clean": "rimraf dist public_site",
+    "dev": "npm run build && npm run serve",
+    "serve": "http-server public_site -p 8080 -o"
+  },
+  "keywords": ["static-site-generator", "blog", "handlebars"],
+  "author": "Usman Saleem",
+  "license": "(Apache-2.0 OR MIT)",
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "moment": "^2.30.1",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@types/fs-extra": "^11.0.4",
+    "typescript": "^5.3.3",
+    "rimraf": "^5.0.5",
+    "http-server": "^14.1.1"
+  }
+}
