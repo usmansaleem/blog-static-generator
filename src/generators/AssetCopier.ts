@@ -6,7 +6,7 @@ export class AssetCopier {
   private outputDir: string;
 
   constructor(outputDir: string) {
-    this.sourceDir = path.join(__dirname, '../../../blog-static-v7/public');
+    this.sourceDir = path.join(__dirname, '../../static-assets');
     this.outputDir = outputDir;
   }
 
